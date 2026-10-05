@@ -1,0 +1,2 @@
+($=>{$(()=>{$('.block-text-content .plane-shadow').each((idx,el)=>{gsap.fromTo(el,{bottom:0,left:0,x:'-100%',y:'100%',},{scrollTrigger:{trigger:el.closest('.block-text-content'),scrub:!1,start:'center center',end:'center center'},bottom:'100%',left:'100%',x:0,y:0,duration:5,ease:'none'})})})})(jQuery)
+;

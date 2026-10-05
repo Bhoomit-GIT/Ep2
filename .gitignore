@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Next.js build output (unused — static site)
+.next/
+
+# Audit/development screenshots & scripts
+_audit/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Python
+__pycache__/
+*.pyc
+server.py
+
+# Logs
+*.log
+npm-debug.log*
+
+# Vercel
+.vercel/

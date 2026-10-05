@@ -1,0 +1,614 @@
+/* ==========================================================================
+   AURA CONCIERGE — NEW SECTIONS STYLESHEET (REFINED)
+   Sections: Hospitality, Team Members, Team Management, Blog / Journal
+   Design System: Dream Orphans, Eastern Harrogate, Afacad Flux
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Shared Section Typography & Structure (Zero Overlap Guaranteed)
+   -------------------------------------------------------------------------- */
+.block-hospitality,
+.block-team-members,
+.block-team-management-wrap,
+.block-journal {
+  scroll-margin-top: 100px;
+}
+
+.block-hospitality .text-content,
+.block-team-members .text-content,
+.block-team-management .text-content,
+.block-journal .text-content {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+/* Blue cursive subtitle - generous vertical separation from headline beneath */
+.block-hospitality .text-content h2.cursive,
+.block-team-members .text-content h2.cursive,
+.block-team-management .text-content h2.cursive,
+.block-journal .text-content h2.cursive {
+  font-family: var(--ff-eastern-harrogate), cursive;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  font-weight: 400;
+  color: var(--c-secondary, #8DAEB6) !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.75rem !important; /* Eliminates all text collision with text beneath */
+  line-height: 1.25 !important;
+  text-transform: none;
+  letter-spacing: normal;
+  display: block !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Main uppercase headline beneath cursive text */
+.block-hospitality .text-content h2:not(.cursive),
+.block-team-members .text-content h2:not(.cursive),
+.block-team-management .text-content h2:not(.cursive),
+.block-journal .text-content h2:not(.cursive) {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: clamp(1.85rem, 3.8vw, 3.25rem);
+  font-weight: 400;
+  color: var(--c-primary, #2F4156);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2 !important;
+  margin-top: 0 !important;
+  margin-bottom: 1.25rem !important;
+  display: block !important;
+  position: relative;
+  z-index: 1;
+}
+
+.block-hospitality .text-content p,
+.block-team-members .text-content p,
+.block-team-management .text-content p,
+.block-journal .text-content p {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--c-text-dark, #4C5B6B);
+  max-width: 720px;
+  margin-inline: auto;
+  margin-top: 0.75rem !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. HOSPITALITY SECTION (Sleek 4-Column Grid, Compact & Balanced)
+   -------------------------------------------------------------------------- */
+.hospitality-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.hospitality-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(47, 65, 86, 0.08);
+  box-shadow: 0 8px 24px -8px rgba(47, 65, 86, 0.06);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+}
+
+.hospitality-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px -10px rgba(47, 65, 86, 0.12);
+  border-color: rgba(141, 174, 182, 0.4);
+}
+
+.hospitality-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background-color: #e5e2db;
+}
+
+.hospitality-card__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hospitality-card:hover .hospitality-card__image-wrapper img {
+  transform: scale(1.06);
+}
+
+.hospitality-card__tag {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(32, 49, 64, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FAF8F5;
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hospitality-card__body {
+  padding: 1.5rem 1.35rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.hospitality-card__body h3 {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: 1.28rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--c-primary, #2F4156);
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.hospitality-card__body p {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--c-text-dark, #4C5B6B);
+  margin-bottom: 1.35rem;
+  flex-grow: 1;
+}
+
+.hospitality-card__link {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-primary, #2F4156);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease, gap 0.3s ease;
+  margin-top: auto;
+}
+
+.hospitality-card__link:hover {
+  color: var(--c-secondary, #8DAEB6);
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. TEAM MEMBERS SECTION
+   -------------------------------------------------------------------------- */
+.team-members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(47, 65, 86, 0.08);
+  box-shadow: 0 8px 24px -8px rgba(47, 65, 86, 0.06);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px -10px rgba(47, 65, 86, 0.12);
+  border-color: rgba(141, 174, 182, 0.4);
+}
+
+.team-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #e5e2db;
+}
+
+.team-card__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-card:hover .team-card__image-wrapper img {
+  transform: scale(1.06);
+}
+
+.team-card__body {
+  padding: 1.5rem 1.35rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.team-card__name {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--c-primary, #2F4156);
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+/* Blue cursive role - ample separation above and below */
+.team-card__role {
+  font-family: var(--ff-eastern-harrogate), cursive;
+  font-size: 1.3rem;
+  color: var(--c-secondary, #8DAEB6) !important;
+  margin-top: 0.4rem !important;
+  margin-bottom: 1.25rem !important; /* Zero overlap with metadata below */
+  line-height: 1.35 !important;
+  display: block !important;
+}
+
+.team-card__meta {
+  border-top: 1px solid rgba(47, 65, 86, 0.08);
+  padding-top: 1rem;
+  margin-top: auto;
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.9rem;
+  color: var(--c-text-dark, #4C5B6B);
+  line-height: 1.45;
+  text-align: left;
+}
+
+.team-card__meta-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.65rem;
+}
+
+.team-card__meta-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(47, 65, 86, 0.6);
+  margin-bottom: 0.15rem;
+}
+
+.team-card__meta-value {
+  font-weight: 500;
+  color: var(--c-primary, #2F4156);
+}
+
+.team-card__cta {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: 100px;
+  background: transparent;
+  border: 1px solid var(--c-primary, #2F4156);
+  color: var(--c-primary, #2F4156);
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .team-card__cta {
+  background: var(--c-primary, #2F4156);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   3. TEAM MANAGEMENT & OPERATIONS COMMAND SECTION
+   -------------------------------------------------------------------------- */
+.block-team-management {
+  position: relative;
+  background: #203140;
+  border-radius: 28px;
+  padding: 5.5rem 3.5rem;
+  color: #FAF8F5;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(22, 34, 47, 0.4);
+}
+
+.block-team-management::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(141, 174, 182, 0.15) 0%, rgba(32, 49, 64, 0) 70%);
+  pointer-events: none;
+}
+
+.block-team-management .text-content h2:not(.cursive) {
+  color: #FAF8F5 !important;
+}
+
+.block-team-management .text-content p {
+  color: rgba(250, 248, 245, 0.78);
+}
+
+.management-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.management-pillar {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.management-pillar:hover {
+  transform: translateY(-6px);
+  border-color: rgba(141, 174, 182, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Blue metric numbers - ample separation */
+.management-pillar__metric {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  color: var(--c-secondary, #8DAEB6) !important;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 1.15rem !important; /* Zero overlap with title beneath */
+  display: block !important;
+}
+
+.management-pillar__title {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #FAF8F5;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.management-pillar__description {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(250, 248, 245, 0.72);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. BLOG / THE AURA JOURNAL SECTION
+   -------------------------------------------------------------------------- */
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.journal-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(47, 65, 86, 0.08);
+  box-shadow: 0 8px 24px -8px rgba(47, 65, 86, 0.06);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+}
+
+.journal-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 40px -10px rgba(47, 65, 86, 0.12);
+  border-color: rgba(141, 174, 182, 0.4);
+}
+
+.journal-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #e5e2db;
+}
+
+.journal-card__image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journal-card:hover .journal-card__image-wrapper img {
+  transform: scale(1.06);
+}
+
+.journal-card__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(32, 49, 64, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FAF8F5;
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.journal-card__body {
+  padding: 1.75rem 1.6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Blue meta text - ample separation */
+.journal-card__meta {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-secondary, #8DAEB6) !important;
+  margin-top: 0;
+  margin-bottom: 0.9rem !important; /* Zero overlap with article title beneath */
+  line-height: 1.4;
+  display: block !important;
+}
+
+.journal-card__body h3 {
+  font-family: var(--ff-dream-orphans), sans-serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--c-primary, #2F4156);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.journal-card__body p {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--c-text-dark, #4C5B6B);
+  margin-bottom: 1.35rem;
+  flex-grow: 1;
+}
+
+.journal-card__link {
+  font-family: var(--ff-afacad-flux), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-primary, #2F4156);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s ease, gap 0.3s ease;
+  margin-top: auto;
+}
+
+.journal-card__link:hover {
+  color: var(--c-secondary, #8DAEB6);
+  gap: 0.75rem;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .hospitality-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+  .team-members-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+  .management-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .block-hospitality .text-content,
+  .block-team-members .text-content,
+  .block-team-management .text-content,
+  .block-journal .text-content {
+    margin-bottom: 2.75rem;
+    padding-inline: 0.5rem;
+  }
+  .block-hospitality .text-content h2.cursive,
+  .block-team-members .text-content h2.cursive,
+  .block-team-management .text-content h2.cursive,
+  .block-journal .text-content h2.cursive {
+    font-size: 2.2rem;
+    margin-bottom: 1.25rem !important;
+  }
+  .block-hospitality .text-content h2:not(.cursive),
+  .block-team-members .text-content h2:not(.cursive),
+  .block-team-management .text-content h2:not(.cursive),
+  .block-journal .text-content h2:not(.cursive) {
+    font-size: 2rem;
+    line-height: 1.25 !important;
+  }
+  .hospitality-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+  .journal-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+  .block-team-management {
+    padding: 3.5rem 1.75rem;
+    border-radius: 20px;
+  }
+  .management-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .team-members-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin-inline: auto;
+  }
+  .block-hospitality .text-content h2.cursive,
+  .block-team-members .text-content h2.cursive,
+  .block-team-management .text-content h2.cursive,
+  .block-journal .text-content h2.cursive {
+    font-size: 1.85rem;
+    margin-bottom: 1rem !important;
+  }
+  .block-hospitality .text-content h2:not(.cursive),
+  .block-team-members .text-content h2:not(.cursive),
+  .block-team-management .text-content h2:not(.cursive),
+  .block-journal .text-content h2:not(.cursive) {
+    font-size: 1.65rem;
+  }
+}
+
