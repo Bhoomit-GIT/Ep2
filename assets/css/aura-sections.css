@@ -612,3 +612,25 @@
   }
 }
 
+/* --------------------------------------------------------------------------
+   Disabled Social & Non-interactive Contact Elements
+   -------------------------------------------------------------------------- */
+.footer_social-links a.is-disabled,
+.footer_social-links a[aria-disabled="true"] {
+  pointer-events: none !important;
+  cursor: default !important;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.footer_social-links a.is-disabled:hover,
+.footer_social-links a[aria-disabled="true"]:hover {
+  transform: none !important;
+}
+
+.footer__text-content--secondary span {
+  display: inline-block;
+  user-select: all;
+  cursor: default;
+}
+
