@@ -582,50 +582,58 @@ window.addEventListener('load', function() {
 
 <script>
 // Interactive Curators Morphing Pill Cards
-document.addEventListener('DOMContentLoaded', function() {
-  const container = document.getElementById('curators-container');
-  if (!container) return;
+(function() {
+  function initCurators() {
+    const container = document.getElementById('curators-container');
+    if (!container || container.dataset.initialized) return;
+    container.dataset.initialized = 'true';
 
-  const items = container.querySelectorAll('.curator-item');
+    const items = container.querySelectorAll('.curator-item');
 
-  function setActiveCurator(targetItem) {
+    function setActiveCurator(targetItem) {
+      items.forEach(item => {
+        if (item === targetItem) {
+          item.classList.add('is-active');
+          item.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.remove('is-active');
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
     items.forEach(item => {
-      if (item === targetItem) {
-        item.classList.add('is-active');
-        item.setAttribute('aria-expanded', 'true');
-      } else {
-        item.classList.remove('is-active');
-        item.setAttribute('aria-expanded', 'false');
-      }
+      // Hover triggers expansion smoothly
+      item.addEventListener('mouseenter', function() {
+        setActiveCurator(this);
+      });
+
+      // Click / Touch tap triggers expansion
+      item.addEventListener('click', function(e) {
+        if (e.target.closest('.curator-card__btn')) {
+          return;
+        }
+        setActiveCurator(this);
+      });
+
+      // Keyboard accessibility
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (!e.target.closest('.curator-card__btn')) {
+            e.preventDefault();
+            setActiveCurator(this);
+          }
+        }
+      });
     });
   }
 
-  items.forEach(item => {
-    // Hover triggers expansion smoothly
-    item.addEventListener('mouseenter', () => {
-      setActiveCurator(item);
-    });
-
-    // Click / Touch tap triggers expansion
-    item.addEventListener('click', (e) => {
-      // If clicked on the link button inside the card, let the link navigate
-      if (e.target.closest('.curator-card__btn')) {
-        return;
-      }
-      setActiveCurator(item);
-    });
-
-    // Keyboard accessibility
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        if (!e.target.closest('.curator-card__btn')) {
-          e.preventDefault();
-          setActiveCurator(item);
-        }
-      }
-    });
-  });
-});
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCurators);
+  } else {
+    initCurators();
+  }
+})();
 </script>
 
 </body></html>
