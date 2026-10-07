@@ -1,9 +1,30 @@
 ($=>{let lenis
-if(typeof Lenis!=='undefined'){lenis=new Lenis({autoRaf:!0,prevent:node=>(node.classList.contains('modal')||(node.classList.contains('block-listing-villas')&&node.classList.contains('map-view'))||node.classList.contains('cookieadmin_details_wrapper')||node.classList.contains('iti__country-list'))})}
-if(typeof gsap!=='undefined'){if(typeof ScrollTrigger!=='undefined')gsap.registerPlugin(ScrollTrigger)
-if(typeof CustomEase!=='undefined')gsap.registerPlugin(CustomEase)}
-if(typeof Lenis!=='undefined'&&lenis&&typeof ScrollTrigger!=='undefined'){gsap.ticker.add(time=>{lenis.raf(time*1000)})
-gsap.ticker.lagSmoothing(0)}
+if(typeof Lenis!=='undefined'){
+  lenis=new Lenis({
+    autoRaf:false,
+    lerp:0.09,
+    duration:1.2,
+    smoothWheel:true,
+    prevent:node=>(node.classList.contains('modal')||(node.classList.contains('block-listing-villas')&&node.classList.contains('map-view'))||node.classList.contains('cookieadmin_details_wrapper')||node.classList.contains('iti__country-list'))
+  });
+  window.lenis=lenis;
+}
+if(typeof gsap!=='undefined'){
+  if(typeof ScrollTrigger!=='undefined')gsap.registerPlugin(ScrollTrigger);
+  if(typeof CustomEase!=='undefined')gsap.registerPlugin(CustomEase);
+}
+if(typeof Lenis!=='undefined'&&lenis){
+  if(typeof ScrollTrigger!=='undefined'){
+    lenis.on('scroll',ScrollTrigger.update);
+  }
+  if(typeof gsap!=='undefined'){
+    gsap.ticker.add(time=>{lenis.raf(time*1000)});
+    gsap.ticker.lagSmoothing(0);
+  }else{
+    function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
+    requestAnimationFrame(raf);
+  }
+}
 let scrollY
 window.GBWP={google:{maps:[],markers:[],},debounce:(func,wait,immediate)=>{let timeout
 return function(){const context=this

@@ -903,3 +903,142 @@
   cursor: default;
 }
 
+/* ==========================================================================
+   5. PERFORMANCE & CORE WEB VITALS OPTIMIZATIONS
+   ========================================================================== */
+
+/* Custom Sleek Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0d151e;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(141, 174, 182, 0.35);
+  border-radius: 4px;
+  border: 1px solid #0d151e;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(160, 239, 233, 0.7);
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(141, 174, 182, 0.35) #0d151e;
+}
+
+/* Hardware Acceleration & Rendering hints */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent native scroll-behavior fighting Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Defer rendering of offscreen sections to eliminate layout/paint lag */
+.block-hospitality {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}
+
+.block-team-members {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 550px;
+}
+
+.block-team-management-wrap {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+.block-journal {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}
+
+.block-feature-cards {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 700px;
+}
+
+.block-image-enhanced-content {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 450px;
+}
+
+/* Interactive Card Hardware Acceleration */
+.hospitality-card,
+.journal-card,
+.curator-item,
+.feature-card {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Enhanced Form UX & Focus States */
+.gform_wrapper input[type="text"],
+.gform_wrapper input[type="email"],
+.gform_wrapper input[type="tel"],
+.gform_wrapper textarea,
+.gform_wrapper select {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease !important;
+}
+
+.gform_wrapper input[type="text"]:focus,
+.gform_wrapper input[type="email"]:focus,
+.gform_wrapper input[type="tel"]:focus,
+.gform_wrapper textarea:focus,
+.gform_wrapper select:focus {
+  border-color: #A0EFE9 !important;
+  box-shadow: 0 0 0 3px rgba(160, 239, 233, 0.25) !important;
+  outline: none !important;
+}
+
+.gform_button,
+.btn.primary {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease !important;
+}
+
+.gform_button:hover,
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(160, 239, 233, 0.3) !important;
+}
+
+.gform_button:active,
+.btn.primary:active {
+  transform: translateY(0);
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
